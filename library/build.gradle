@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 19495145
+        versionName "19.49.514.5"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation files('libs/xwalk_core_library_java.jar')
+}
+
+publish {
+// gradlew clean build bintrayUpload -PbintrayUser=用户名 -PbintrayKey=apikey -PdryRun=false
+    userOrg = 'faury'//bintray.com用户名
+    groupId = 'cn.faury.android.library'//jcenter上的路径
+    artifactId = 'f-xwalkcore-library'//项目名称
+    publishVersion = '19.49.514.5'//版本号
+    desc = 'this is an andriod xwalk core library'//描述
+    website = 'https://github.com/fzyycp/f-xwalkcore-library'//github上的地址
+}
